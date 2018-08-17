@@ -1,0 +1,8 @@
+<content>
+    <div id="layout" class="container">
+        <div id="north"></div>
+        <div id="center"></div>
+        <div id="south"></div>
+        <div id="localUploadForm"></div>
+    </div>
+</content>

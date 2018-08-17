@@ -1,0 +1,11 @@
+.loginPane {
+    border: solid 1px #eee;
+    padding: 10px;
+    margin: 20px;
+}
+
+.captcha {
+    margin-top:5px;
+}
+
+

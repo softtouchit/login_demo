@@ -1,0 +1,32 @@
+<content>
+    <div class="container">
+        <div class="register-panel center-block row align-items-center justify-content-center">
+            <div class="col-4 loginPane">
+                <form id="regForm" >
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username"  aria-describedby="usernameHelp" placeholder="username" required="true" data-remote='/user'/> 
+                        <small id="usernameHelp" class="form-text text-muted">Username is minimum 4 bytes and maximum 8 bytes</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter email" required="true"/> 
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" name="password" placeholder="Password" required="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword2">Repeat Password</label>
+                        <input type="password" class="form-control" name="password2" placeholder="Repeat Password" required="true"/>
+                    </div>
+                    
+                    <div class="control form-group">
+                        <button class="btn btn-outline-secondary"  data-onclick="register" >Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</content>

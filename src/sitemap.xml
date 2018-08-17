@@ -1,0 +1,80 @@
+<site domain="dev.test">
+    <common>
+        <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width,  initial-scale=1" />
+            <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+            <link rel="stylesheet" href="/css/bootstrap.min.css" />  
+            <title>Login</title>
+        </head>
+    </common>
+    
+    <page template="templates/simple.xml" path="" title="Login">
+        
+        <head>
+            <link rel="stylesheet" href="/css/login.css" />  
+            <link rel="stylesheet" href="/css/form.css" />  
+            <script src="/js/core.js" />
+            <script src="/js/sha256.js" />
+            <script src="/js/login.js" />
+            <script src="/js/buttons.js" /> 
+            <script src="js/form.js" />
+            <script src="/js/signon.js" /> 
+             <script src="/js/captcha.js" />  
+             <script src="/js/dialog.js" />  
+        </head>
+        <load href="content/login.xml" to="center" />
+    </page>
+    
+    
+    <page template="templates/simple.xml" path="register" title="Register">
+        
+        <head>
+            <link rel="stylesheet" href="/css/form.css" />  
+            <script src="/js/core.js" />
+            <script src="/js/sha256.js" />
+            <script src="/js/login.js" />
+            <script src="/js/buttons.js" /> 
+            <script src="/js/form.js" /> 
+            <script src="/js/register.js" /> 
+        </head>
+        <load href="content/register.xml" to="center" />
+    </page>
+    
+    
+    <resources dir="images" path="images" />
+    <resources dir="css" path="css" />
+    <resources dir="js" path="js" />
+    <resources dir="fonts" path="fonts" />
+    
+    <services>
+        
+        <service path="/user" userdb="users.db" capacity="10240" secret="xldd23e" aesKey="3CcLut8kJhBcCa0kKwGmSZhhIFLzm74wE7DJMv8lpII=" root="admin" email="test@test.org" password="test.test.321" assignGroup="admin:63" groups="staff,sadmin,teacher,student">
+            <get xpipe="http://www.xmlpipe.org/xpe/db/user/validate" />
+            <post xpipe="http://www.xmlpipe.org/xpe/db/user/register"  />
+            <post path="/user/password/reset" xpipe="http://www.xmlpipe.org/xpe/db/user/token/reset" />
+            <!--reset username by token -->
+            <post path="/user/password/reset/token" xpipe="http://www.xmlpipe.org/xpe/db/user/password/reset/token" />
+            <get path="/user/session" xpipe="http://www.xmlpipe.org/xpe/db/user/session/get" />
+            <post path="/user/session" xpipe="http://www.xmlpipe.org/xpe/db/user/session/update" />
+            <post path="user/session/changepassword" xpipe="http://www.xmlpipe.org/xpe/db/user/session/changepassword" />
+            <get path="user/session/list" xpipe="http://www.xmlpipe.org/xpe/db/user/session/list" />
+            <del path="/user/del" xpipe="http://www.xmlpipe.org/xpe/db/user/admin/del" />
+            <get path="/user/login" xpipe="http://www.xmlpipe.org/xpe/db/user/nonce" />
+            <post path="/user/login" xpipe="http://www.xmlpipe.org/xpe/db/user/login" />
+            <post path="/signoff" xpipe="http://www.xmlpipe.org/xpe/db/user/session/signoff" />
+            <post path="user/group" xpipe="http://www.xmlpipe.org/xpe/db/user/admin/group" />
+            <del path="user/group" xpipe="http://www.xmlpipe.org/xpe/db/user/admin/group" />
+            <get path="/user/session/authtoken" xpipe="http://www.xmlpipe.org/xpe/db/user/session/authtoken" />
+            <post path="/user/session/authtoken" xpipe="http://www.xmlpipe.org/xpe/db/user/session/authtoken" />
+        </service>
+        
+        <service path="json/captcha" width="300" height="80" size="4" secret="xldd23e" aesKey="3CcLut8kJhBcCa0kKwGmSZhhIFLzm74wE7DJMv8lpII=" timeout="10000">
+            <get xpipe="http://www.xmlpipe.org/xpe/captcha/get" />
+            <post xpipe="http://www.xmlpipe.org/xpe/captcha/verify" />
+        </service>
+        
+        
+    </services>
+    
+</site>
